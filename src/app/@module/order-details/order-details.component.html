@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Order Successfully Placed</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p><strong>Patient Name:</strong> {{ orderDetails.patient
+                        }}</p>
+                    <p><strong>Address:</strong> {{ orderDetails.address }}</p>
+                    <p><strong>Medicine:</strong> {{ orderDetails.medicine
+                        }}</p>
+                    <p><strong>Order Details:</strong> {{
+                        orderDetails.orderDetails }}</p>
+                    <p><strong>Price:</strong> {{ orderDetails.price }}</p>
+                    <p><strong>Quantity:</strong> {{ orderDetails.quantity
+                        }}</p>
+                    <p><strong>Total:</strong> {{ orderDetails.totalPrice }}</p>
+                    <p><strong>Order Date:</strong> {{ orderDate }}</p>
+                    <p><strong>Receive Date:</strong> {{ receiveDate }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary"
+                        (click)="goToDashboard()">Go to Dashboard</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

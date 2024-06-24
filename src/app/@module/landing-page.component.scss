@@ -1,0 +1,33 @@
+.sidenav-container {
+    height: 100vh;
+}
+
+.sidenav {
+    width: 200px;
+
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.main-content {
+    flex: 1;
+    padding: 16px;
+
+    overflow: auto;
+}
+
+.footer {
+    padding: 16px;
+
+    background-color: #f1f1f1;
+}

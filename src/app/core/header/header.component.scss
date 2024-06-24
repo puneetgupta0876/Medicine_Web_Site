@@ -1,0 +1,10 @@
+/* src/app/header/header.component.scss */
+
+.mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}

@@ -1,0 +1,80 @@
+<div class="loginpage">
+    <div class="loginbody">
+        <div class="container-fluid">
+            <div class="row row_medicine">
+                <div class="medicine_log"></div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="loginImg">
+                        <img src="../../../assets/loginpage.jpg"
+                            alt="Login Image">
+                    </div>
+                </div>
+                <div class="col-xxl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="userloginForm">
+                        <form [formGroup]="loginForm"
+                            (submit)="loginFormSubmit()">
+                            <div class="form-main">
+                                <h1>Sign in</h1>
+                                <div class="form-group">
+                                    <div class="iconAdd">
+                                        <span class="userbtn" matPrefix>
+                                            <mat-icon>person</mat-icon>
+                                        </span>
+                                    </div>
+                                    <input type="number" class="form-control"
+                                        placeholder="Enter your phone number"
+                                        formControlName="mobile"
+                                        autocomplete="off">
+                                    <mat-error
+                                        *ngIf="isSubmited && !login['mobile'].valid || login['mobile'].errors || login['mobile'].touched">
+                                        <span
+                                            *ngIf="login['mobile'].hasError('mobile')">Enter
+                                            valid email</span>
+                                    </mat-error>
+                                </div>
+                                <div class="form-group">
+                                    <div class="iconAdd">
+                                        <span class="passBtn" matPrefix>
+                                            <mat-icon>lock</mat-icon>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control"
+                                        placeholder="Enter your password"
+                                        formControlName="password"
+                                        autocomplete="off">
+                                    <mat-error
+                                        *ngIf="isSubmited && !login['password'].valid || login['password'].errors || login['password'].touched">
+                                        <span
+                                            *ngIf="login['password'].hasError('minlength')">Password
+                                            must be at least 6 characters
+                                            long</span>
+                                        <span
+                                            *ngIf="login['password'].hasError('maxlength')">Password
+                                            must be at most 20 characters
+                                            long</span>
+                                    </mat-error>
+                                </div>
+                                <div class="fx_set" fxLayout="row"
+                                    fxLayoutGap="50px">
+                                    <div fxFlex="50%" class="fx_set2"></div>
+                                    <div fxFlex="50%" class="fx_set3"></div>
+                                </div>
+                                <div class="loginIn">
+                                    <button mat-raised-button type="submit"
+                                        class="submitBtn"
+                                        [disabled]="showLoader">
+
+                                        <span *ngIf="!showLoader">Login</span>
+                                    </button>
+                                </div>
+                                <div class="row sign_ip"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

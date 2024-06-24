@@ -1,0 +1,183 @@
+.img_dqs img {
+    width: 100%;
+}
+
+.userLogin {
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.row_dqs {
+    width: 100%;
+    padding: 50px;
+}
+
+.dqs_log img {
+    width: 90px;
+}
+
+.form-main h1 {
+    text-align: center;
+    color: #063178;
+    font-weight: 500;
+    font-size: 27px;
+}
+
+.form-main {
+    width: 100%;
+    padding: 40px 70px 50px 70px;
+}
+
+.form-main .form-group {
+    padding: 20px;
+}
+
+.form-main .form-group input {
+    height: 48px;
+    padding-left: 35px;
+}
+
+.loginIn button {
+    background-color: #063178;
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
+}
+
+.loginIn {
+    padding: 0 22px 15px 23px;
+}
+
+.fx_set {
+    width: 100%;
+    padding: 20px 0 10px 26px;
+}
+
+.fx_set2 span {
+    padding-left: 10px;
+    color: #959292;
+}
+
+.fx_set3 a {
+    padding-left: 100px;
+    color: #959292;
+    text-decoration: none;
+}
+
+.loginpage {
+    width: 100%;
+    float: left;
+    height: 100vh;
+    background-color: #becefe;
+    background: linear-gradient(90deg, #becefe 0 50%, #063178 50% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginbody {
+    width: 95%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    height: auto;
+}
+
+.userbtn {
+    border: none;
+    position: absolute;
+    left: 8px;
+    color: #becefe;
+    width: 22px;
+    top: 12px;
+}
+
+.passBtn {
+    border: none;
+    position: absolute;
+    left: 8px;
+    color: #becefe;
+    width: 22px;
+    top: 12px;
+}
+
+.iconAdd {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    position: relative;
+}
+
+.sign_ip {
+    text-align: center;
+    color: #a09492;
+}
+
+.sign_ip a {
+    text-decoration: none;
+    color: #063178;
+}
+
+.fx_set2 input {
+    border-color: #959492;
+}
+
+.iconAdd input {
+    padding-left: 35px;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #063178;
+    animation: spinner .8s linear infinite;
+    margin-left: 8px;
+}
+
+.error {
+    margin-top: 16px !important;
+    font-weight: 500;
+}
+
+:host::ng-deep .spiner .mat-mdc-progress-spinner svg {
+    width: 80px !important;
+    height: 80px !important;
+}
+
+:host::ng-deep .mat-mdc-progress-spinner circle,
+.mat-mdc-spinner circle {
+    stroke: #ffffff !important;
+}
+
+:host::ng-deep .I-center .mat-mdc-progress-spinner svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+.loginIn .mat-mdc-progress-spinner {
+    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
+    top: 0 !important;
+}
+
+.loginImg {
+    img {
+        width: 100%;
+    }
+}

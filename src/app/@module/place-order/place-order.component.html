@@ -1,0 +1,88 @@
+<p>place-order works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Place Order</div>
+                <div class="card-body">
+                    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="patient" class="form-label">
+                                Patient
+                            </label>
+                            <select class="form-select" id="patient"
+                                formControlName="patient" required>
+                                <option *ngFor="let patient of patients"
+                                    [value]="patient.firstName">
+                                    {{ patient.firstName }} {{ patient.lastName
+                                    }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Medicine" class="form-label">
+                                Medicine
+                            </label>
+                            <select class="form-select" id="Medicine"
+                                formControlName="medicine" required>
+                                <option value="Dolo">Dolo</option>
+                                <option value="Drops">Drops</option>
+                                <option value="Inhalers">Inhalers</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orderDetails" class="form-label">
+                                Order
+                                Details
+                            </label>
+                            <textarea class="form-control" id="orderDetails"
+                                formControlName="orderDetails"
+                                required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <div class="mb-3">
+                                <label for="Medicine" class="form-label">
+                                    Quantity
+                                </label>
+
+                                <input type="text" class="form-control"
+                                    formControlName="quantity" type="number"
+                                    required>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="mb-3">
+                                <label for="price" class="form-label">
+                                    Price
+                                </label>
+
+                                <input type="text" class="form-control"
+                                    formControlName="price" type="number"
+                                    required>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="mb-3">
+                                <label for="Total Price" class="form-label">
+                                    Total Price
+                                </label>
+
+                                <input readonly type="text" class="form-control"
+                                    formControlName="totalPrice" type="number"
+                                    required>
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Add to Card
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
