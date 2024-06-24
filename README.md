@@ -43,8 +43,7 @@ Add items to the cart.
 In the checkout order summary, view and manage product details. Items can be added or removed, and changes are reflected in local storage.
 
 ## Order Successfully Placed
-
-![alt text](image-6.png)
+![alt text](image-7.png)
 After successfully placing an order, view the order details including address and delivery date.
    
 
