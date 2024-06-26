@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
+import { CartService } from 'src/app/services/cart.service';
 
 
 @Component({
@@ -10,59 +12,78 @@ import { Router } from '@angular/router';
 })
 export class PlaceOrderComponent {
   orderForm: FormGroup;
-  patients: any[] = [];
-
-  constructor(private fb: FormBuilder, private route: Router) {
+  cart: any[] = [];
+  constructor(private fb: FormBuilder, private route: Router, private apiService: ApiService, private cartService: CartService) {
     this.orderForm = this.fb.group({
-      patient: [null, Validators.required],
-      orderDetails: ['', Validators.required],
-      medicine: ['', Validators.required],
-      quantity: ['', [Validators.required, Validators.min(1)]],
-      totalPrice: [null],
-      price: ['', [Validators.required, Validators.min(0)]],
+      patient_name: ['', Validators.required],
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zipcode: ['', Validators.required],
+      chemist_id: ['', Validators.required],
+      delivery_type: ['delivery', Validators.required],
+      latitude: [12.970612, Validators.required],
+      longitude: [77.6382433, Validators.required],
+
     });
   }
 
   ngOnInit(): void {
-    this.loadPatients();
-    this.calculateTotalPrice();
+    this.getCurrentLocation();
+    this.cart = this.cartService.getCart();
+    console.log(this.cart);
+
   }
 
-  loadPatients() {
-    const storedPatients = JSON.parse(localStorage.getItem('patients') || '[]');
-    console.log(storedPatients);
 
-    this.patients = storedPatients;
+
+
+  addItem(): void {
+    this.route.navigateByUrl('/landingPage/add-cart')
   }
 
-  calculateTotalPrice(): void {
-    this.orderForm.get('quantity')?.valueChanges.subscribe(quantity => {
-      const price = this.orderForm.get('price')?.value || 0;
-      this.orderForm.get('totalPrice')?.setValue(quantity * price);
-      console.log(this.orderForm.value);
-
-    });
-
-    this.orderForm.get('price')?.valueChanges.subscribe(price => {
-      const quantity = this.orderForm.get('quantity')?.value || 0;
-      this.orderForm.get('totalPrice')?.setValue(quantity * price);
-      console.log(this.orderForm.value);
-    });
-  }
-  onSubmit() {
-    console.log(this.orderForm);
-
+  onSubmit(): void {
     if (this.orderForm.valid) {
-      const placeOrder = this.orderForm.value;
-      console.log('Patient Added:', placeOrder);
-      const placeOrderDeatails = JSON.parse(localStorage.getItem('placeOrderDeatails') || '[]');
-      placeOrderDeatails.push(placeOrder);
-      localStorage.setItem('placeOrderDeatails', JSON.stringify(placeOrderDeatails));
-      this.route.navigateByUrl('landingPage/checkout')
+      const formData = new FormData();
+      const cartItems = this.cartService.getCart().map(item => ({
+        medicine_id: item.medicine_id,
+        quantity: item.quantity
+      }));
+      console.log(formData);
+      formData.append('apikey', 'wFIMP75eG1sQEh8vVAdXykgzF4mLhDw3');
+      formData.append('patient_name', this.orderForm.get('patient_name')?.value);
+      formData.append('mobile', this.orderForm.get('mobile')?.value);
+      formData.append('address', this.orderForm.get('address')?.value);
+      formData.append('city', this.orderForm.get('city')?.value);
+      formData.append('state', this.orderForm.get('state')?.value);
+      formData.append('zipcode', this.orderForm.get('zipcode')?.value);
+      formData.append('chemist_id', this.orderForm.get('chemist_id')?.value);
+      formData.append('delivery_type', this.orderForm.get('delivery_type')?.value);
+      formData.append('latitude', this.orderForm.get('latitude')?.value);
+      formData.append('longitude', this.orderForm.get('longitude')?.value);
+      formData.append('auto_assign', 'true');
+      formData.append('items', JSON.stringify(cartItems));
 
-    } else {
-      window.alert('Please Enter Valide number')
+      this.apiService.placeOrder(formData).subscribe((response: any) => {
+        if (response.status_code === '1') {
+          alert('Order placed successfully!');
+          this.route.navigateByUrl('/landingPage/dashboard')
+        } else {
+          alert('Failed to place order. Please try again.');
+        }
+      });
     }
+  }
+
+  getCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude);
+
+      });
+    }
+
 
   }
 }

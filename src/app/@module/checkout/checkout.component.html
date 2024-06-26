@@ -1,64 +1,25 @@
-<p>checkout works!</p>
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-header">Checkout Order Summary</div>
-                <mat-card>
-                    <div class="card-body">
-                        <mat-card-header>
-                            <mat-card-subtitle>
-                                Patient Name: <strong> {{
-                                    checkOutPatient[0]?.patient
-                                    }}</strong>
-                            </mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <div class="mb-3">
-                                <p><strong>Medicine:</strong> {{
-                                    checkOutPatient[0]?.medicine
-                                    }}</p>
-                            </div>
-                            <div class="mb-3">
-                                <p><strong>Details:</strong>
-                                    {{
-                                    checkOutPatient[0]?.orderDetails
-                                    }}</p>
-                            </div>
-                            <div class="mb-3">
-                                <p><strong>Price:</strong> {{
-                                    checkOutPatient[0]?.price
-                                    }}</p>
-                            </div>
-                            <div class="mb-3"
-                                style="display: flex; justify-content: space-between;">
-                                <div>
+    <h2>Checkout</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Manufacturer</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>TotalPrice</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cart">
+                <td>{{ item?.medicine_name }}</td>
+                <td>{{ item?.manufacturer_name }}</td>
+                <td>{{ item?.mrp }}</td>
+                <td>{{ item?.quantity }}</td>
+                <td>{{ item?.quantity * item?.mrp }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="placeOrder()">Place order</button>
 
-                                    <p><strong>Quantity: </strong>
-                                        {{ checkOutPatient[0]?.quantity
-                                        }}
-                                    </p>
-                                </div>
-                                <div>
-
-                                    <button style="margin-right: 10px;"
-                                        (click)="decreaseQuantity()">-</button>
-                                    <button
-                                        (click)="increaseQuantity()">+</button>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <p><strong>Total:</strong> {{
-                                    checkOutPatient[0]?.totalPrice }}</p>
-                            </div>
-                        </mat-card-content>
-                        <button (click)="onSubmit()" type="submit"
-                            class="btn btn-primary w-100">
-                            Place Order
-                        </button>
-                    </div>
-                </mat-card>
-            </div>
-        </div>
-    </div>
 </div>

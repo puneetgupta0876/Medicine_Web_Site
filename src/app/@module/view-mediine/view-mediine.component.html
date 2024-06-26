@@ -1,0 +1,53 @@
+
+<mat-card-actions>
+
+    <button (click)="goToDashboard()"
+        mat-button
+        color="blue">Go to Dashboard</button>
+</mat-card-actions>
+<div *ngFor="let medicine of medicineData" class="medicine-details">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="medicine-image">
+                <img
+                    (error)="medicine.medicine_image = getDefaultImage()"
+                    mat-card-image [src]="medicine.medicine_image"
+                    alt="{{medicine.medicine_name}}">
+            </div>
+            <mat-card-title>{{ medicine.medicine_name }}</mat-card-title>
+            <mat-card-subtitle>{{ medicine.manufacturer_name
+                }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p><strong>Content:</strong> {{ medicine.content }}</p>
+            <p><strong>How it works:</strong> {{ medicine.how_medicine_works
+                }}</p>
+            <p><strong>How to use:</strong> {{ medicine.how_to_use }}</p>
+            <p><strong>Side Effects:</strong> {{ medicine.side_effects }}</p>
+            <p><strong>Alcohol:</strong> {{ medicine.alcohol }}</p>
+            <p><strong>Driving:</strong> {{ medicine.driving }}</p>
+            <p><strong>Kidney:</strong> <span
+                    [innerHTML]="medicine.kidney"></span></p>
+            <p><strong>Lactation:</strong> <span
+                    [innerHTML]="medicine.lactation"></span></p>
+            <p><strong>Liver:</strong> <span
+                    [innerHTML]="medicine.liver"></span></p>
+            <p><strong>Pregnancy:</strong> <span
+                    [innerHTML]="medicine.pregnancy"></span></p>
+            <p><strong>MRP:</strong> {{ medicine.mrp }}</p>
+            <p><strong>Pack Size :</strong> {{ medicine.pack_size }}</p>
+            <p><strong>Packing Size:</strong> {{ medicine.packing_size }}</p>
+            <p><strong>Dosage Type:</strong> {{ medicine.dosage_type }}</p>
+            <p><strong>Is Rx Required:</strong> {{ medicine.is_rx_required ?
+                'Yes' : 'No' }}</p>
+            <p><strong>Medicine Category:</strong> {{ medicine.medicine_category
+                }}</p>
+            <p><strong>GST Percentage:</strong> {{ medicine.gst_percentage
+                }}%</p>
+            <div class="thumb-medicine-image">
+                <img [src]="medicine.thumb_medicine_image"
+                    alt="Thumb Image of {{ medicine.medicine_name }}">
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

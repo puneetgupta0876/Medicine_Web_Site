@@ -1,0 +1,35 @@
+<p>patient-list works!</p>
+<div class="d-flex justify-content-end mb-3">
+    <button (click)="addPatient()" type="button"
+        class="btn btn-primary">Add Patient</button>
+</div>
+<div class="container mt-5">
+    <h2>Patient List</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Sr No</th>
+                <th>Mobile</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Zip Code</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let patient of patients  let i = index"
+                (click)="viewDetails(patient)">
+                <td>{{ i+1 }}</td>
+                <td>{{ patient.mobile }}</td>
+                <td>{{ patient.first_name }}</td>
+                <td>{{ patient.last_name }}</td>
+                <td>{{ patient.zipcode }}</td>
+                <td>{{ patient.gender }}</td>
+                <td><button class="btn btn-info"
+                        (click)="viewDetails(patient.patient_id)">View
+                        Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -4,6 +4,7 @@
 
 <div class="container mt-5">
     <div class="row">
+
         <div class="col-md-4 p-2" *ngFor="let medicine of medicines">
             <mat-card>
                 <mat-card-header>
@@ -22,8 +23,12 @@
                         }}</p>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button mat-button color="primary">Add to Cart</button>
-                    <button mat-button color="accent">View Details</button>
+                    <button (click)="addToCart(medicine.medicine_id)" mat-button
+                        color="primary">Add to Cart</button>
+                    <button
+                        (click)="gotoMedicineDetails(medicine.medicine_id)"
+                        mat-button
+                        color="accent">View Details</button>
                 </mat-card-actions>
             </mat-card>
         </div>

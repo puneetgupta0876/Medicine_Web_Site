@@ -1,0 +1,14 @@
+
+<div class="d-flex justify-content-end mb-3">
+    <button (click)="gotoList()" type="button"
+        class="btn btn-primary">Patient
+        List</button>
+</div>
+<div class="container mt-5" *ngIf="patient">
+    <h2>Patient Details</h2>
+    <p><strong>Mobile:</strong> {{ patient.mobile }}</p>
+    <p><strong>First Name:</strong> {{ patient.firstname }}</p>
+    <p><strong>Last Name:</strong> {{ patient.lastname }}</p>
+    <p><strong>Zip Code:</strong> {{ patient.zipcode }}</p>
+
+</div>

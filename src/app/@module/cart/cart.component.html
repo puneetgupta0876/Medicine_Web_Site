@@ -1,0 +1,29 @@
+<p>cart works!</p>
+<!-- cart.component.html -->
+<div class="d-flex justify-content-end mb-3">
+    <button (click)="addMedicine()" type="button"
+        class="btn btn-primary">Add Medicine</button>
+</div>
+<div class="container" style="width: 50%;margin: auto;">
+    <h1>Cart</h1>
+    <div *ngIf="cart.length > 0">
+        <div class="cart-item" *ngFor="let item of cart">
+            <img [src]="item.thumb_medicine_image"
+                (error)="item.thumb_medicine_image = getDefaultImage()"
+                alt="{{item.medicine_name}}"
+                class="cart-item-image">
+            <div class="cart-item-details">
+                <h3>{{item.medicine_name}}</h3>
+                <p>{{item.content}}</p>
+                <p><strong>Manufacturer:</strong> {{item.manufacturer_name}}</p>
+                <p><strong>Price:</strong> {{item.mrp}} INR</p>
+                <p><strong>Quantity:</strong> {{item.quantity}}</p>
+            </div>
+        </div>
+        <button class="btn btn-primary" (click)="checkout()">Proceed to
+            Checkout</button>
+    </div>
+    <div *ngIf="cart.length === 0">
+        <p>Your cart is empty.</p>
+    </div>
+</div>
